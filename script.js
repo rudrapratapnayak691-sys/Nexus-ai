@@ -5,8 +5,8 @@
 const $ = id => document.getElementById(id);
 
 /* ===== SUPABASE SETUP: paste your two values from Supabase (Project Settings > API) ===== */
-const SUPABASE_URL = "PASTE_PROJECT_URL";
-const SUPABASE_KEY = "PASTE_ANON_PUBLIC_KEY";
+const SUPABASE_URL = "https://iqfjfpbolytgksrbnljt.supabase.co";
+const SUPABASE_KEY = "sb_publishable_sWwBucO8KYhIoJ5EDxbzdw_UYXJ77gC";
 const cloudReady = typeof supabase !== "undefined" && !SUPABASE_URL.startsWith("PASTE");
 
 let online = false, neuralOpen = false, handRunning = false, neuralPaused = false;
