@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nexus AI</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body class="locked">
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">N</div>
+    <div><h1>Nexus AI</h1><small id="status">Nexus AI — Sleep mode</small></div>
+  </div>
+  <div class="actions">
+    <button id="stopSpeakBtn" class="icon" title="Stop speaking">🔇</button>
+    <button id="clearBtn" class="icon" title="Clear chat">🗑</button>
+    <button id="loginBtn">Login</button>
+  </div>
+</header>
+
+<main id="chat">
+  <div id="empty">
+    <div class="logo big">N</div>
+    <h2>How can I help?</h2>
+    <p id="emptySub">Tap Unlock below to wake Nexus AI.</p>
+  </div>
+</main>
+
+<footer class="dock">
+  <div class="controls">
+    <button id="unlockBtn">🔓<small>Unlock</small></button>
+    <button id="voiceBtn">🎤<small>Voice</small></button>
+    <button id="neuralBtn">🧠<small>Neural</small></button>
+    <button id="handBtn">✋<small>Hand</small></button>
+  </div>
+  <div class="command">
+    <input id="command" placeholder="Nexus AI is sleeping..." autocomplete="off" disabled>
+    <button id="sendBtn">➤</button>
+  </div>
+  <div id="reply">System standby</div>
+</footer>
+
+<!-- NEURAL SYSTEM -->
+<div id="neuralScreen">
+  <div class="neuralHeader">
+    <div><small>Nexus AI neural core</small><h2>Neural System</h2></div>
+    <button id="exitNeural">Exit</button>
+  </div>
+  <canvas id="neuralCanvas"></canvas>
+  <div class="neuralInfo"><b>Hand control</b><br><span id="gesture">Hand tracking off</span></div>
+  <div id="selectionPanel" class="selectionPanel">
+    <div class="selectionTop">
+      <div><small>Selected neural component</small><h3 id="selectedTitle">No component selected</h3></div>
+      <button id="editCodeBtn">Edit code</button>
+    </div>
+    <p id="selectedInfo">Pinch a glowing node or branch to focus it.</p>
+  </div>
+</div>
+
+<!-- COMPONENT CODE EDITOR -->
+<div id="codeEditor" class="codeEditor">
+  <div class="editorCard">
+    <div class="editorTop"><div><small>Nexus AI neural IDE</small><h2 id="editorTitle">Component code</h2></div><button id="closeEditor">✕</button></div>
+    <p class="editorHint">Edit the component's local code notes/logic. This does not rewrite the website's JavaScript source file.</p>
+    <textarea id="componentCode" spellcheck="false"></textarea>
+    <div class="editorActions"><button id="resetCode">Reset</button><button id="saveCode">Save component</button></div>
+    <p id="editorStatus"></p>
+  </div>
+</div>
+
+<!-- CAMERA -->
+<div id="cameraBox">
+  <video id="video" autoplay playsinline></video>
+  <canvas id="handCanvas"></canvas>
+  <div><b>Hand tracking</b><br><span id="handStatus">Searching...</span></div>
+  <button id="closeHand">✕</button>
+</div>
+
+<!-- LOGIN -->
+<div id="loginPanel">
+  <div class="loginBox">
+    <button id="closeLogin">✕</button>
+    <div class="logo big">N</div>
+    <h2>Nexus AI</h2>
+    <small>Sign in to save your chats on every device</small>
+    <div id="cloudAuth" style="display:none">
+      <input id="authEmail" type="email" placeholder="Enter your email" autocomplete="email">
+      <button id="emailBtn">Continue with email</button>
+      <p id="cloudStatus"></p>
+    </div>
+    <div id="localAuth">
+    <div class="tabs">
+      <button id="tabLogin" class="on">Login</button>
+      <button id="tabSignup">Create Account</button>
+    </div>
+    <input id="username" placeholder="Username" autocomplete="username">
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+    <button id="loginSubmit">Login</button>
+    <p id="loginStatus"></p>
+    </div>
+  </div>
+</div>
+
+<div id="transition"></div>
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
